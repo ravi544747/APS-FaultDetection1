@@ -1,8 +1,0 @@
-[2023-11-22 15:44:06,621] 20 root -INFO- Exporting collection data as pandas dataframe
-[2023-11-22 15:44:06,621] 19 root -INFO- Reading data from database: aps and collection: sensor
-[2023-11-22 15:44:06,625] 21 root -INFO- Found columns: RangeIndex(start=0, stop=0, step=1)
-[2023-11-22 15:44:06,625] 25 root -INFO- Row and columns in df: (0, 0)
-[2023-11-22 15:44:06,625] 26 root -INFO- Save data in feature store
-[2023-11-22 15:44:06,625] 32 root -INFO- Create feature store folder if not available
-[2023-11-22 15:44:06,626] 36 root -INFO- Save df to feature store folder
-[2023-11-22 15:44:06,628] 41 root -INFO- split dataset into train and test set

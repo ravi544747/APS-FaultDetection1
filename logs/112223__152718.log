@@ -1,7 +1,0 @@
-[2023-11-22 15:27:19,563] 20 root -INFO- Exporting collection data as pandas dataframe
-[2023-11-22 15:27:19,563] 19 root -INFO- Reading the data from Data Frame: aps and sensor 
-[2023-11-22 15:27:19,567] 21 root -INFO- Found ColumnsRangeIndex(start=0, stop=0, step=1)
-[2023-11-22 15:27:19,568] 26 root -INFO- Save data in feature store
-[2023-11-22 15:27:19,568] 32 root -INFO- Create feature store folder if not available
-[2023-11-22 15:27:19,568] 36 root -INFO- Save df to feature store folder
-[2023-11-22 15:27:19,570] 41 root -INFO- split dataset into train and test set
