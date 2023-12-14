@@ -3,7 +3,7 @@ from sensor.exception import SensorException
 import os,sys
 from sensor.entity.config_entity import TRANSFORMER_OBJECT_FILE_NAME, TARGET_ENCODER_OBJECT_FILE_NAME, MODEL_FILE_NAME
 from glob import glob
-from typing import Optional
+from typing import Optional,Union
 
 class ModelResolver:
 
@@ -18,14 +18,16 @@ class ModelResolver:
         self.target_encoder_dir_name=target_encoder_dir_name
         self.model_dir_name=model_dir_name
 
-    def get_latest_dir_path(self)->Optional[str]:
+    def get_latest_dir_path(self)-> Union[str,None]:
         try:
             dir_names = os.listdir(self.model_registry)
             # convering dir mane to int
-            if len(dir_names)==0:
+            logging.info("error message from get_latest_dir_path 1")
+            if len(dir_names) == 0:
                 return None
             dir_names = list(map(int, dir_names)) 
             latest_dir_name = max(dir_names)
+            logging.info("error message from get_latest_dir_path 2")
             return os.path.join(self.model_registry, f"{latest_dir_name}")
         except Exception as e:
             raise SensorException(e, sys)
@@ -58,22 +60,26 @@ class ModelResolver:
         except Exception as e:
             raise SensorException(e, sys)
 
-    def get_latest_save_dir_path(self)->str:
+    def get_latest_save_dir_path(self)-> str:
         try:
             latest_dir=self.get_latest_dir_path()
-            if latest_dir==None:
-                os.path.join(self.model_registry,"f{0}")
+            if latest_dir == None:
+                return os.path.join(self.model_registry,f"{0}")
+            logging.info("error message from get_latest_save_dir_path 1")
             latest_dir_num=int(os.path.basename(self.get_latest_dir_path()))
             return os.path.join(self.model_registry,f"{latest_dir_num+1}")
         except Exception as e:
-            raise SensorException(e, sys)
+            raise e
     
     def get_latest_save_model_path(self):
         try:
             latest_dir = self.get_latest_save_dir_path()
+            logging.info("error message from get_latest_save_model_path1")
             return os.path.join(latest_dir,self.model_dir_name,MODEL_FILE_NAME)
+            logging.info("error message from get_latest_save_model_path2")
         except Exception as e:
             raise e
+
 
     def get_latest_save_transformer_path(self):
         try:
